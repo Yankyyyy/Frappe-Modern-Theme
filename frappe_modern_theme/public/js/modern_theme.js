@@ -19,8 +19,8 @@
 
         const theme = document.body.getAttribute('data-theme') || 'light';
         const bgColor = theme === 'dark' 
-            ? 'rgba(20, 22, 24, 0.15)'
-            : 'rgba(255, 255, 255, 0.15)';
+            ? 'rgba(20, 22, 24, 0.08)'
+            : 'rgba(255, 255, 255, 0.08)';
 
         selectors.forEach(sel => {
             document.querySelectorAll(sel).forEach(el => {
@@ -29,19 +29,32 @@
                 
                 // Set to glossy background
                 el.style.setProperty('background-color', bgColor, 'important');
-                el.style.setProperty('-webkit-backdrop-filter', 'blur(12px)', 'important');
-                el.style.setProperty('backdrop-filter', 'blur(12px)', 'important');
+                el.style.setProperty('-webkit-backdrop-filter', 'blur(20px)', 'important');
+                el.style.setProperty('backdrop-filter', 'blur(20px)', 'important');
                 
-                // Also strip backgrounds from all direct children
-                el.querySelectorAll('*').forEach(child => {
+                // Also make child elements glossy (but not ce-block__content)
+                el.querySelectorAll('*:not(.ce-block__content)').forEach(child => {
                     const computedStyle = window.getComputedStyle(child);
                     if (computedStyle.backgroundColor === 'rgb(255, 255, 255)' ||
                         computedStyle.backgroundColor === 'rgba(255, 255, 255, 1)') {
-                        child.style.setProperty('background-color', 'transparent', 'important');
+                        child.style.setProperty('background-color', bgColor, 'important');
+                        child.style.setProperty('-webkit-backdrop-filter', 'blur(12px)', 'important');
+                        child.style.setProperty('backdrop-filter', 'blur(12px)', 'important');
                     }
                 });
             });
         });
+    }
+
+    function applyThemeVars(theme) {
+        if (theme === 'dark') {
+            document.documentElement.style.setProperty('--bg-current', "var(--bg-dark)");
+        } else {
+            document.documentElement.style.setProperty('--bg-current', "var(--bg-light)");
+        }
+        
+        // Reapply background styles after theme change
+        stripCardBackgrounds();
     }
 
     function init() {
