@@ -1,163 +1,67 @@
-/* modern_theme.css */
-
-/* Initialize defaults */
-:root {
-  --bg-light: none;
-  --bg-dark: none;
-  --panel-blur: 8px;
+/* Override Frappe theme variables */
+:root,
+[data-theme="light"] {
+  --bg-color: #eafbff !important;
+  --card-bg: #eafbff !important;
+  --control-bg: #eafbff !important;
+  --surface-bg: #eafbff !important;
+  --sidebar-bg: #eafbff !important;
+  --navbar-bg: #eafbff !important;
+  --form-bg: #eafbff !important;
 }
 
-/* CRITICAL: Override body's default white background */
+/* Global fallback — in case some parts use hardcoded backgrounds */
+html,
 body {
-  background-color: transparent !important;
-  background-image: none !important;
+  background-color: var(--bg-color) !important;
+  background: var(--bg-color) !important;
 }
 
-body[data-theme="dark"] .sidebar,
-body[data-theme="dark"] .desk-sidebar,
-body[data-theme="dark"] .navbar {
-  background: linear-gradient(180deg, rgba(8,9,10,0.6), rgba(8,9,10,0.4));
-}
-
-/* Headline & action contrast */
-.page-head .title-area, .page-head .action-buttons {
-  color: inherit;
-}
-
-/* A few niceties */
-.btn, .btn-default {
-  border-radius: 10px;
-}
-
-/* ========================================
-   PARALLAX BACKGROUND LAYERS
-   ======================================== */
-
-html {
-  /* Main background on html so it never scrolls away */
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-image: var(--bg-light);
-}
-
-body[data-theme="dark"] html {
-  background-image: var(--bg-dark);
-}
-
-/* Removed overlay to show exact image */
-
-/* ========================================
-   MAKE FRAPPE CONTAINERS TRANSPARENT
-   ======================================== */
-
-body,
+/* Main containers that Frappe uses in Desk */
+.layout-main,
 .page-container,
-.page-head,
-.main-section,
-.frappe-control,
+.workspace-body,
+.desk-container,
 .desk-body,
+.desk-page,
+.page-wrapper,
+.main-section,
+.section-body,
+.col.layout-main-section-wrapper,
 .layout-main-section,
-.frappe-page,
-.page-content,
-.content,
-.layout-side-section,
-.sidebar-menu-wrapper,
-.page-card,
-.card,
-.form-layout {
-  background: transparent !important;
-}
 
-/* Glassmorphism cards - glossy with backdrop blur */
-.frappe-card,
-.page-card,
-.card,
+/* Forms, lists, reports */
+.form-page,
+.form-section,
+.form-dashboard-section,
+.form-dashboard-section .row,
+.form-section .section-body,
 .list-row,
 .list-row-container,
-.result,
-.list-header,
-.list-header-area,
-.widget.dashboard-widget-box,
-.ce-block__content {
-  background-color: rgba(255, 255, 255, 0.15) !important;
-  background-image: none !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+.report-wrapper,
+.grid-body,
+.control,
+.form-control,
+.graph-svg-tip,
+.svg-pointer,
+.control-input {
+  background-color: var(--bg-color) !important;
+  background: var(--bg-color) !important;
 }
 
-body[data-theme="dark"] .frappe-card,
-body[data-theme="dark"] .page-card,
-body[data-theme="dark"] .card,
-body[data-theme="dark"] .list-row,
-body[data-theme="dark"] .list-row-container,
-body[data-theme="dark"] .result,
-body[data-theme="dark"] .list-header,
-body[data-theme="dark"] .list-header-area,
-body[data-theme="dark"] .widget.dashboard-widget-box,
-body[data-theme="dark"] .ce-block__content {
-  background-color: rgba(20, 22, 24, 0.15) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
-}
-
-/* Reduce heavy backgrounds for tables */
-.table, .list-table {
-  background: transparent;
-}
-
-/* Remove glossy effect from sidebar - just normal background */
+/* Components */
+.card,
+.frappe-card,
+.widget,
+.modal-content,
+.list-group-item,
+.comment-box,
+.web-form-wrapper,
+.page-head,
+header,
+footer,
 .sidebar,
-.desk-sidebar,
-.navbar,
-.layout-side-section,
-.list-unstyled,
-.sidebar-menu {
-  background: transparent !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-body[data-theme="dark"] .sidebar,
-body[data-theme="dark"] .desk-sidebar,
-body[data-theme="dark"] .navbar,
-body[data-theme="dark"] .layout-side-section,
-body[data-theme="dark"] .list-unstyled,
-body[data-theme="dark"] .sidebar-menu {
-  background: transparent !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-}
-
-.main-section-wrapper,
-.layout-main-section {
-  background: transparent !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-}
-
-/* Ensure modals stay readable */
-.modal-content, .frappe-dialog .modal-content {
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
-  color: #0b0f14;
-}
-
-body[data-theme="dark"] .modal-content {
-  background: linear-gradient(180deg, rgba(12,14,16,0.95), rgba(20,22,24,0.9));
-  color: #e6eef8;
-}
-
-/* Small screens adjustments */
-@media (max-width: 768px) {
-  .page-card, .card {
-    border-radius: 8px;
-  }
-  :root {
-    --panel-blur: 6px;
-  }
+.navbar {
+  background-color: var(--card-bg) !important;
+  background: var(--card-bg) !important;
 }
