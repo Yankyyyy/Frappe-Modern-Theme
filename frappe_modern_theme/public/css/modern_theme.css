@@ -1,0 +1,77 @@
+/* modern_theme.css
+body[data-theme="dark"] .sidebar,
+body[data-theme="dark"] .desk-sidebar,
+body[data-theme="dark"] .navbar {
+background: linear-gradient(180deg, rgba(8,9,10,0.6), rgba(8,9,10,0.4));
+}
+
+
+/* Headline & action contrast */
+.page-head .title-area, .page-head .action-buttons {
+color: inherit;
+}
+
+
+/* A few niceties */
+.btn, .btn-default {
+border-radius: 10px;
+}
+
+
+/* Parallax layers using pseudo-elements on <body> (two layered backgrounds) */
+body::before, body::after{
+content: '';
+position: fixed;
+left: 0; right: 0; top: 0; bottom: 0;
+z-index: -2;
+background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;
+transform: translateZ(0);
+will-change: transform;
+pointer-events: none;
+}
+
+
+body::before{
+/* far layer */
+opacity: 1;
+background-image: var(--bg-light);
+z-index: -3;
+}
+
+
+body::after{
+/* mid layer (slight vignette/overlay) */
+background: radial-gradient(ellipse at center, rgba(0,0,0,0.08), rgba(0,0,0,0.28));
+z-index: -2;
+}
+
+
+body[data-theme="dark"]::before{
+background-image: var(--bg-dark);
+}
+
+
+/* Ensure modals and overrides keep readable contrast */
+.modal-content, .frappe-dialog .modal-content{
+background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7));
+color: #0b0f14;
+}
+body[data-theme="dark"] .modal-content{
+background: linear-gradient(180deg, rgba(12,14,16,0.9), rgba(20,22,24,0.85));
+color: #e6eef8;
+}
+
+
+/* Reduce heavy backgrounds for tables */
+.table, .list-table {
+background: transparent;
+}
+
+
+/* Small screens adjustments */
+@media (max-width: 768px){
+.page-card, .card{ border-radius: 8px; }
+:root{ --panel-blur: 6px; }
+}

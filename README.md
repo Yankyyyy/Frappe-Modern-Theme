@@ -1,41 +1,13 @@
-### Frappe Modern Theme
+Frappe Modern Theme — glassmorphism + parallax
 
-Minimal modern theme with glassmorphism + parallax
+This repository is a minimal Frappe app that adds a polished, background-aware glassmorphism theme for the Desk (ERPNext admin UI). It includes:
 
-### Installation
+responsive glassmorphism panels
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+layered parallax background
 
-```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app frappe_modern_theme
-```
+automatic background switching for light/dark theme
 
-### Contributing
+theme-safe CSS (transparent panels, overrides) and a small JS watcher
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
-
-```bash
-cd apps/frappe_modern_theme
-pre-commit install
-```
-
-Pre-commit is configured to use the following tools for checking and formatting your code:
-
-- ruff
-- eslint
-- prettier
-- pyupgrade
-
-### CI
-
-This app can use GitHub Actions for CI. The following workflows are configured:
-
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
-
-
-### License
-
-mit
+integration via hooks.py (app_include_css / app_include_js)
