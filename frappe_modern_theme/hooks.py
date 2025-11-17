@@ -28,7 +28,6 @@ app_license = "mit"
 # app_include_css = "/assets/frappe_modern_theme/css/frappe_modern_theme.css"
 # app_include_js = "/assets/frappe_modern_theme/js/frappe_modern_theme.js"
 app_include_css = "/assets/frappe_modern_theme/css/modern_theme.css"
-app_include_js = "/assets/frappe_modern_theme/js/modern_theme.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/frappe_modern_theme/css/frappe_modern_theme.css"
