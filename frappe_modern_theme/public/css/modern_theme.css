@@ -78,6 +78,11 @@
     background-color: var(--hover-bg) !important;
   }
 
+  .ace_editor {
+    background-color: var(--hover-bg) !important;
+    background: var(--hover-bg) !important;
+  }
+
   .link-btn {
     background-color: var(--hover-bg) !important;
     background: var(--hover-bg) !important;
