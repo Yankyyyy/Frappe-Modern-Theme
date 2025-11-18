@@ -1,67 +1,116 @@
-/* Override Frappe theme variables */
-:root,
+/* Apply ONLY when light theme is active */
+:root[data-theme="light"] {
+
+  /* Override Frappe theme variables */
+  --bg-color: #F7F3FA !important;
+  --card-bg: #F7F3FA !important;
+  --control-bg: #F7F3FA !important;
+  --surface-bg: #F7F3FA !important;
+  --sidebar-bg: #F7F3FA !important;
+  --navbar-bg: #F7F3FA !important;
+  --form-bg: #F7F3FA !important;
+  --hover-bg: #E9E1EF !important;
+}
+
+/* Everything else also wrapped inside the light-theme condition */
 [data-theme="light"] {
-  --bg-color: #eafbff !important;
-  --card-bg: #eafbff !important;
-  --control-bg: #eafbff !important;
-  --surface-bg: #eafbff !important;
-  --sidebar-bg: #eafbff !important;
-  --navbar-bg: #eafbff !important;
-  --form-bg: #eafbff !important;
-}
+  /* Global fallback */
+  html,
+  body {
+    background-color: var(--bg-color) !important;
+    background: var(--bg-color) !important;
+  }
 
-/* Global fallback — in case some parts use hardcoded backgrounds */
-html,
-body {
-  background-color: var(--bg-color) !important;
-  background: var(--bg-color) !important;
-}
+  /* Main containers */
+  .layout-main,
+  .page-container,
+  .workspace-body,
+  .desk-container,
+  .desk-body,
+  .desk-page,
+  .page-wrapper,
+  .main-section,
+  .section-body,
+  .col.layout-main-section-wrapper,
+  .layout-main-section,
 
-/* Main containers that Frappe uses in Desk */
-.layout-main,
-.page-container,
-.workspace-body,
-.desk-container,
-.desk-body,
-.desk-page,
-.page-wrapper,
-.main-section,
-.section-body,
-.col.layout-main-section-wrapper,
-.layout-main-section,
+  /* Forms, lists, reports */
+  .form-page,
+  .form-section,
+  .form-dashboard-section,
+  .form-dashboard-section .row,
+  .form-section .section-body,
+  .list-row,
+  .list-row-container,
+  .report-wrapper,
+  .grid-body,
+  .control,
+  .graph-svg-tip,
+  .svg-pointer,
+  .dropdown-menu
 
-/* Forms, lists, reports */
-.form-page,
-.form-section,
-.form-dashboard-section,
-.form-dashboard-section .row,
-.form-section .section-body,
-.list-row,
-.list-row-container,
-.report-wrapper,
-.grid-body,
-.control,
-.form-control,
-.graph-svg-tip,
-.svg-pointer,
-.control-input {
-  background-color: var(--bg-color) !important;
-  background: var(--bg-color) !important;
-}
+  /* Components */
+  .card,
+  .frappe-card,
+  .widget,
+  .modal-content,
+  .list-group-item,
+  .comment-box,
+  .web-form-wrapper,
+  .page-head,
+  header,
+  footer,
+  .small,
+  .sidebar,
+  .navbar {
+    background-color: var(--card-bg) !important;
+    background: var(--card-bg) !important;
+  }
+  .ql-container .ql-editor {
+    background-color: var(--hover-bg) !important;
+  }
 
-/* Components */
-.card,
-.frappe-card,
-.widget,
-.modal-content,
-.list-group-item,
-.comment-box,
-.web-form-wrapper,
-.page-head,
-header,
-footer,
-.sidebar,
-.navbar {
-  background-color: var(--card-bg) !important;
-  background: var(--card-bg) !important;
+  .ql-container .ql-editor.ql-blank {
+    background-color: var(--hover-bg) !important;
+  }
+
+  .form-control {
+    background-color: var(--hover-bg) !important;
+  }
+
+  .link-btn {
+    background-color: var(--hover-bg) !important;
+    background: var(--hover-bg) !important;
+  }
+
+  /* Hover effects */
+  .control-value {
+    background-color: var(--hover-bg) !important;
+  }
+
+  .input-with-feedback {
+    background-color: var(--hover-bg) !important;
+  }
+
+  .desk-sidebar .desk-sidebar-item.standard-sidebar-item.selected {
+    background-color: var(--hover-bg) !important;
+  }
+  .ql-toolbar {
+    background-color: var(--hover-bg) !important;
+  }
+  .link-btn:hover,
+  .list-row:hover,
+  .card:hover,
+  .widget:hover,
+  .list-group-item:hover,
+  .dropdown-item:hover,
+  .btn:hover,
+  .desk-sidebar-item:hover,
+  .recent-item:hover,
+  .awesomplete ul li:hover {
+    background-color: var(--hover-bg) !important;
+  }
+  .form-control:hover {
+    background-color: var(--hover-bg) !important;
+  }
 }
